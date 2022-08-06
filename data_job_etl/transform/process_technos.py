@@ -2,8 +2,7 @@ import os
 import pandas as pd
 # import spacy
 import json
-import pkg_resources
-
+import importlib.resources
 
 from data_job_etl.config.definitions import PROJECT_PATH, TECHNOS
 
@@ -63,8 +62,8 @@ class TechnosProcessor:
     @staticmethod
     def map_techno_lower_to_pretty(df):
         """ Rename techno with their cased name and correcting aliases. """
-        stream = pkg_resources.resource_stream(__name__, 'data/technos_lower_to_pretty.csv')
-        mapper = pd.read_csv(stream, sep=';')
+        with importlib.resources.path('data_job_etl.data', 'technos_lower_to_pretty.csv') as path:
+            mapper = pd.read_csv(path, sep=';')
         lower = mapper.Skills_lower.values
         pretty = mapper.Skills_pretty.values
         mapper_dict = dict(zip(lower, pretty))
