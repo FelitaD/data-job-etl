@@ -44,7 +44,7 @@ class TechnosProcessor:
     def pivot_technos(df):
         """ Melt dataframe to have one technology per row (for usage in Tableau). """
         unpivotted_columns = ['url', 'title', 'company', 'location', 'type', 'industry', 'remote', 'created_at',
-                              'text', 'language', 'stack']
+                              'text', 'stack']
         pivotted_technos = pd.melt(df, id_vars=unpivotted_columns).sort_values(by=['company', 'created_at', 'title'])
         pivotted_technos.reset_index(drop=True, inplace=True)
         return pivotted_technos
@@ -79,3 +79,6 @@ class TechnosProcessor:
     #     doc = model_output(text)
     #     technos = [ent.text for ent in doc.ents]
     #     return list(set(technos))
+
+# df = pd.DataFrame(columns=['title', 'company'])
+# TechnosProcessor.map_techno_lower_to_pretty(df)

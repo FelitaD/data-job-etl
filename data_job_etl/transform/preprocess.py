@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import re
 from sqlalchemy import create_engine
-from langdetect import detect
+# from langdetect import detect
 
 from data_job_etl.config.definitions import DB_STRING
 
@@ -24,8 +24,8 @@ class Preprocessor:
         self.jobs['created_at'] = pd.to_datetime(self.jobs['created_at'])
         self.jobs['remote'].replace('N', np.nan, inplace=True)
         self.jobs['title'] = self.jobs['title'].apply(lambda x: self.preprocess_title(x))
-        self.jobs['language'] = self.jobs['text'].apply(lambda x: detect(x))
-        self.jobs.drop(self.jobs[(self.jobs['language'] != 'en') & (self.jobs['language'] != 'fr')].index, axis=0, inplace=True)
+        # self.jobs['language'] = self.jobs['text'].apply(lambda x: detect(x))
+        # self.jobs.drop(self.jobs[(self.jobs['language'] != 'en') & (self.jobs['language'] != 'fr')].index, axis=0, inplace=True)
         self.jobs['text'] = self.jobs['text'].apply(lambda x: self.preprocess_text(x))
         self.jobs.reset_index(inplace=True, drop=True)
 

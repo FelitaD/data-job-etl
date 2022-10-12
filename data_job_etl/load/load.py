@@ -31,7 +31,7 @@ class Loader:
             industry = self.jobs.loc[i, 'industry']
             remote = self.jobs.loc[i, 'remote']
             created_at = self.jobs.loc[i, 'created_at']
-            language = self.jobs.loc[i, 'language']
+            # language = self.jobs.loc[i, 'language']
             technos = self.jobs.loc[i, 'technos']
 
             job = PivottedJob(url=url,
@@ -42,7 +42,7 @@ class Loader:
                               industry=industry,
                               remote=remote,
                               created_at=created_at,
-                              language=language,
+                              # language=language,
                               technos=technos)
 
             with engine.connect() as connection:

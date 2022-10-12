@@ -29,8 +29,3 @@ def transform():
     # ner_trainer = NERTrainer()
     # ner_trainer.init_config()
     # ner_trainer.train()
-
-
-# if __name__ == '__main__':
-#
-#     transform()
