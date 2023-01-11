@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "data-job-etl"
-version = "0.4.0"
+version = "0.8.0"
 description = ""
 authors = ["Donor <donorfelita@msn.com>"]
+packages = [
+    { include = "data_job_etl" },
+    { include = "data_job_etl/data" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
